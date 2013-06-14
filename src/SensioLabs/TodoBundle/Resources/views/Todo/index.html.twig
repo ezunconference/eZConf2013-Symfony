@@ -1,0 +1,27 @@
+{% extends "SensioLabsTodoBundle::layout.html.twig" %}
+
+{% block title "My todo list" %}
+
+{% block body %}
+
+    <ul>
+    {% for task in tasks %}
+        <li>
+            <a href="{{ path('todo_task', { 'id': task.id }) }}">
+                {{ task.title|capitalize }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <h2>Create new task</h2>
+
+    <form action="{{ path('todo_new') }}" method="POST">
+        <div>
+            <label for="todo_title">Title</label>:
+            <input type="text" name="title"/>
+            <button type="submit">Create</button>
+        </div>
+    </form>
+
+{% endblock body %}

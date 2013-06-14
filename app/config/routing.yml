@@ -1,0 +1,6 @@
+dpc_demo:
+    resource: "@DpcDemoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sensio_todo:
+    resource: "@SensioLabsTodoBundle/Resources/config/routing.yml"

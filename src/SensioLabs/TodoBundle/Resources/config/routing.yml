@@ -1,0 +1,13 @@
+todo_list:
+    pattern:  /todo
+    defaults: { _controller: SensioLabsTodoBundle:Todo:index }
+
+todo_task:
+    pattern:  /todo/{id}
+    defaults: { _controller: SensioLabsTodoBundle:Todo:task }
+    requirements: { id: "\d+" }
+
+todo_new:
+    pattern:  /todo/new
+    defaults: { _controller: SensioLabsTodoBundle:Todo:new }
+    methods:  [ POST ]

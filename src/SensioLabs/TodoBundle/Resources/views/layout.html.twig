@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <h1>My Todo List</h1>
+        {% block body %}{% endblock %}
+
+        <h2>Sidebar</h2>
+        {{ render_esi(controller('SensioLabsTodoBundle:Todo:random')) }}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

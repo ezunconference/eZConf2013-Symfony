@@ -1,0 +1,11 @@
+{% extends "SensioLabsTodoBundle::layout.html.twig" %}
+
+{% block title "My todo list " ~ task.title %}
+
+{% block body %}
+
+    <p>
+        {{ task.title }}
+    </p>
+
+{% endblock body %}

@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="sensiolabs.todo_table">todo</parameter>
+        <parameter key="sensiolabs.todo_gateway.class">SensioLabs\TodoBundle\Gateway\TodoGateway</parameter>
+        <parameter key="sensiolabs.database.class">SensioLabs\TodoBundle\Persistence\Database</parameter>
+
+        <!--
+        <parameter key="sensiolabs.pdo_attr_autocommit" type="constant">PDO::ATTR_AUTOCOMMIT</parameter>
+        -->
+
+        <parameter key="database_options" type="collection">
+            <parameter key="0" type="constant">false</parameter>
+            <parameter key="3" type="constant">PDO::ERRMODE_EXCEPTION</parameter>
+            <parameter key="1002">SET NAMES 'UTF8'</parameter>
+        </parameter>
+    </parameters>
+
+    <services>
+
+        <service id="sensiolabs.todo_gateway" class="%sensiolabs.todo_gateway.class%">
+            <argument>%sensiolabs.todo_table%</argument>
+            <argument type="service" id="sensiolabs.database"/>
+        </service>
+
+        <service id="sensiolabs.database" public="false" class="%sensiolabs.database.class%">
+            <argument>%database_name%</argument>
+            <argument>%database_user%</argument>
+            <argument>%database_password%</argument>
+            <argument>%database_host%</argument>
+            <argument>%database_port%</argument>
+            <argument>%database_options%</argument>
+        </service>
+
+    </services>
+
+</container>

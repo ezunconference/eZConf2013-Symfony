@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+{# extends [ "::"~ name ~".html.twig", "::base.html.twig" ] #}
+{# extends "admin" == name ? "::admin.html.twig" : "::base.html.twig" #}
+
+{% block title "Personal page of " ~ name %}
+
+{% block body %}
+<p>
+    Hi <strong>{{ name|capitalize }}</strong>!
+</p>
+
+<p>
+    Your ip address is {{ app.request.clientIp }}.
+</p>
+
+<h2>Friends</h2>
+
+<ul>
+    {% for friend in [ 'Hugo', 'Thom', 'John', 'Jane' ] if name != friend|lower %}
+        <li>
+            <a href="{{ path('hello', { 'name': friend|lower }) }}">
+                {{ friend }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock body %}
